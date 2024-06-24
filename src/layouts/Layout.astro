@@ -2,13 +2,18 @@
 import Head from "../components/head.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
-
 ---
 
 <html>
   <Head />
   <body>
-    <Header />
+    <header>
+      <h1>My shop</h1>
+      <nav>
+        <a href="/">home</a>
+        <a href="/">about</a>
+      </nav>
+    </header>
     <slot />
     <Footer />
   </body>
