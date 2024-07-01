@@ -1,7 +1,14 @@
 ---
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-
-<h2>{frontmatter.title}</h2>
 <slot />
+<h2>{frontmatter.title}</h2>
+<p>¥{frontmatter.price}</p>
+<p>{frontmatter.text}</p>
+<dl>
+    <dt>品番</dt>
+    <dd>{frontmatter.id}</dd>
+    <dt>メーカー</dt>
+    <dd>{frontmatter.maker}</dd>
+</dl>
