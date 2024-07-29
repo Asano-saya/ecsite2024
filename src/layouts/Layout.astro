@@ -2,19 +2,55 @@
 import Head from "../components/head.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import "../assets/styles/style.scss";
 ---
 
 <html>
   <Head />
   <body>
     <header>
-      <h1>My shop</h1>
-      <nav>
-        <a href="/">home</a>
-        <a href="/">about</a>
+      <div class="shop">
+        <h1>Saya's shop</h1>
+        <img class="logo" src="../../public/images/logo.png" />
+      </div>
+      <nav class="gnav">
+        <a class="gnav__list" href="/">home</a>
+        <a class="gnav__list" href="/">about</a>
       </nav>
     </header>
+
     <slot />
     <Footer />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var loadMoreButton = document.querySelector(".load-more");
+        var cards = document.querySelectorAll(".contents__item");
+
+        // 最初に表示する6つのカードを展開状態にする
+        cards.forEach(function (card, index) {
+          if (index >= 6) {
+            card.classList.remove("expanded");
+          } else {
+            card.classList.add("expanded");
+          }
+        });
+
+        // ボタンをクリックしたときの処理
+        loadMoreButton.addEventListener("click", function () {
+          cards.forEach(function (card, index) {
+            if (index >= 6) {
+              card.classList.toggle("expanded");
+            }
+          });
+
+          // ボタンのテキストを切り替える
+          if (loadMoreButton.textContent === "more") {
+            loadMoreButton.textContent = "reduction";
+          } else {
+            loadMoreButton.textContent = "more";
+          }
+        });
+      });
+    </script>
   </body>
 </html>

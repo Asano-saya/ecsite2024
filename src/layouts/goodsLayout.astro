@@ -1,14 +1,102 @@
 ---
 const { frontmatter } = Astro.props;
+import Head from "../components/head.astro";
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import "../assets/styles/style.scss";
 ---
 
-<slot />
-<h2>{frontmatter.title}</h2>
-<p>¥{frontmatter.price}</p>
-<p>{frontmatter.text}</p>
-<dl>
-    <dt>品番</dt>
-    <dd>{frontmatter.id}</dd>
-    <dt>メーカー</dt>
-    <dd>{frontmatter.maker}</dd>
-</dl>
+<html>
+    <Head />
+    <body>
+        <main>
+            <div class="goods">
+                <div class="img-switcher">
+                    <img
+                        id="mainImg"
+                        class="main-img"
+                        src="../../public/images/2cool_1.png"
+                        alt="画像1"
+                    />
+                    <div class="thumbnails">
+                        <button class="thumb-btn active">
+                            <img
+                                class="thumb-img"
+                                src="../../public/images/2cool_1.png"
+                                alt="画像１"
+                            />
+                        </button>
+                        <button class="thumb-btn">
+                            <img
+                                class="thumb-img"
+                                src="../../public/images/2cool_2.png"
+                                alt="画像2"
+                            />
+                        </button>
+                        <button class="thumb-btn">
+                            <img
+                                class="thumb-img"
+                                src="../../public/images/2cool_3.png"
+                                alt="画像3"
+                            />
+                        </button>
+                    </div>
+                </div>
+                <div class="goods__info">
+                    <h2 class="goods__title">{frontmatter.title}</h2>
+                    <p class="goods__price">¥{frontmatter.price}</p>
+                    <p class="goods__text">{frontmatter.text}</p>
+                    <dl class="goods__item">
+                        <div class="goods__list">
+                            <dt>品番</dt>
+                            <dd>{frontmatter.id}</dd>
+                        </div>
+                        <div class="goods__list">
+                            <dt>メーカー</dt>
+                            <dd>{frontmatter.maker}</dd>
+                        </div>
+                    </dl>
+                    <form action="＃">
+                        <input type="hidden" name="user" value="ショップID" />
+                        <input type="hidden" name="number" value="商品番号" />
+                         数量<select name="kosuu">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <input
+                                class="kosuu__text"
+                                type="submit"
+                                value="追加"
+                            />
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const mainImg = document.getElementById("mainImg");
+                const thumbBtns = document.querySelectorAll(".thumb-btn");
+
+                thumbBtns.forEach((btn) => {
+                    btn.addEventListener("click", function () {
+                        const img = this.querySelector("img");
+                        mainImg.src = img.src;
+                        mainImg.alt = img.alt;
+
+                        thumbBtns.forEach((btn) =>
+                            btn.classList.remove("active"),
+                        );
+                        this.classList.add("active");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

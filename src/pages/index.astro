@@ -3,12 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import Goodscard from '../components/goodsCard.astro';
 import { getCollection } from 'astro:content';
 const workPages = await getCollection('goods');
+import "../assets/styles/style.scss";
 ---
 
 <Layout>
 <main>
-  {workPages.map(productPage => (<Goodscard title={productPage.data.title} href=`/goods/${productPage.slug}` thumbnail={productPage.data.thumbnail}  body={productPage.data.description} />
-))}
+  <div class="contents card-container">
+    {workPages.map(productPage => (<Goodscard title={productPage.data.title} href=`/goods/${productPage.slug}` thumbnail={productPage.data.thumbnail}  price={productPage.data.price} />
+    ))}
+  </div>
+  <div class="button-container">
+        <button class="load-more">more</button>
+      </div>
+
 
 </main>
 </Layout>
