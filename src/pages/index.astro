@@ -9,7 +9,7 @@ import "../assets/styles/style.scss";
 <Layout>
 <main>
   <div class="contents card-container">
-    {workPages.map(productPage => (<Goodscard title={productPage.data.title} href=`/goods/${productPage.slug}` thumbnail={productPage.data.thumbnail}  price={productPage.data.price} />
+    {workPages.map(productPage => (<Goodscard title={productPage.data.title} href=`/01_ecsite/goods/${productPage.slug}` thumbnail={productPage.data.thumbnail}  price={productPage.data.price} />
     ))}
   </div>
   <div class="button-container">

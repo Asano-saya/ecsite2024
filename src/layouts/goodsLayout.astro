@@ -15,28 +15,28 @@ import "../assets/styles/style.scss";
                     <img
                         id="mainImg"
                         class="main-img"
-                        src="../../public/images/2cool_1.png"
+                        src="/01_ecsite/images/2cool_1.png"
                         alt="画像1"
                     />
                     <div class="thumbnails">
                         <button class="thumb-btn active">
                             <img
                                 class="thumb-img"
-                                src="../../public/images/2cool_1.png"
+                                src="/01_ecsite/images/2cool_1.png"
                                 alt="画像１"
                             />
                         </button>
                         <button class="thumb-btn">
                             <img
                                 class="thumb-img"
-                                src="../../public/images/2cool_2.png"
+                                src="/01_ecsite/images/2cool_2.png"
                                 alt="画像2"
                             />
                         </button>
                         <button class="thumb-btn">
                             <img
                                 class="thumb-img"
-                                src="../../public/images/2cool_3.png"
+                                src="/01_ecsite/images/2cool_3.png"
                                 alt="画像3"
                             />
                         </button>
@@ -59,7 +59,8 @@ import "../assets/styles/style.scss";
                     <form action="＃">
                         <input type="hidden" name="user" value="ショップID" />
                         <input type="hidden" name="number" value="商品番号" />
-                         数量<select name="kosuu">
+                         数量
+                        <select name="kosuu">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -97,6 +98,7 @@ import "../assets/styles/style.scss";
                     });
                 });
             });
+            console.log(frontmatter.thumbnail);
         </script>
     </body>
 </html>

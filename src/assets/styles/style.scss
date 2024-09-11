@@ -12,6 +12,16 @@
      margin-right: auto;
  }
 
+
+
+ @mixin mq($breakpoint) {
+     $breakpoints: ("sm": "screen and(min-width: 400px)",
+         "md": "screen and(min-width: 768px)",
+         "lg":"screen and(min-width: 1000px)",
+         "xl":"screen and(min-width: 1200px)",
+     ) !default;
+ }
+
  body {
      background-color: #3a3059;
      @include inner();
@@ -117,12 +127,19 @@
  .contents {
      @include flex();
 
+     @mixin mq($sm) {
+         flex: none;
+     }
+
+
+
 
      &__item {
          width: 30%;
          height: 50vh;
          margin-top: 50px;
          padding: 10px;
+         padding-bottom: 20px;
          background-color: #fff;
          text-align: center;
 
